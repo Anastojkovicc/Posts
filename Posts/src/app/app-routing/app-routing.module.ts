@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { PostsComponentComponent } from '../posts-component/posts-component.component';
+import { PostsComponent } from '../posts-component/posts-component.component';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 
 
 const routes: Routes = [
-  {path: '', component: AppComponent},
-  {path: 'posts', component: PostsComponentComponent}
+  {path: '', redirectTo:'/posts',  pathMatch: 'full'},
+  {path: 'posts', component: PostsComponent}
 
 ];
 
