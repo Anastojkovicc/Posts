@@ -10,8 +10,9 @@ import { PostService} from '../services/post-service.service';
   styleUrls: ['./posts-component.component.css']
 })
 export class PostsComponent implements OnInit {
+
   public posts : Post[] = [];
-  postSubscription !: Subscription;
+  public postSubscription !: Subscription;
 
   constructor(private postsService: PostService) { }
   
@@ -19,4 +20,5 @@ export class PostsComponent implements OnInit {
     this.postSubscription= this.postsService.getPosts().subscribe(posts => this.posts = posts);
   }
   
+
 }
