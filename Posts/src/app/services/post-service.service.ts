@@ -17,6 +17,9 @@ export class PostService {
     );
     }
 
-    
+  createPost(postInformations : Post){
+      return this.http.post('https://jsonplaceholder.typicode.com/posts', 
+      {... postInformations, userId :1 });
+    }
     
 }

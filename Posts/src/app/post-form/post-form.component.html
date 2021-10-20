@@ -1,24 +1,74 @@
 
-
+ <div class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4  ">
+    <label>CREATE NEW POST</label>
+</div>
 <div class="form-control-lg border border-primary shadow-lg px-5 py-3 m-4 bg-body rounded">
-    <form>
+    <form #postForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4 rounded-pill ">
             <label>Title:</label>
         </div>
     <div class=" justify-content-center pt-1 mb-3">
-        <input type="text" placeholder="Type your title here..." class=" form-control">
+        <input type="text" name="title" placeholder="Type your title here..." class=" form-control"
+        [(ngModel)]="postInformations.title"
+        #titleInput="ngModel" 
+        required
+        minlength="3"
+        [ngClass]="{
+            'is-danger':
+              !titleInput.valid && (titleInput.dirty || titleInput.touched)
+          }"
+        >
+        <div
+          *ngIf="!titleInput.valid && (titleInput.dirty || titleInput.touched)"
+          class=" d-flex justify-content-center text-uppercase"
+          >
+          <p class="text-danger" *ngIf="titleInput.errors?.required">
+            Post title is required
+          </p>
+          <p class="text-danger" *ngIf="titleInput.errors?.minlength">
+            Must type at least 3 characters
+          </p>
+        </div>
     </div>
+    
     <div class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4 rounded-pill ">
         <label>Body:</label>
     </div>
     <div class="d-flex justify-content-center pt-1 mb-3">
-        <textarea class=" form-control" name="body" cols="30" rows="10" placeholder="Type your content here..."></textarea>
+        <textarea class=" form-control" name="body" cols="30" rows="10" placeholder="Type your content here..."
+        [(ngModel)]="postInformations.body"
+        #bodyArea="ngModel" 
+        required
+        minlength="5"
+        [ngClass]="{
+            'is-danger': !bodyArea.valid && (bodyArea.dirty || bodyArea.touched)
+          }"
+        ></textarea>
     </div>
+    <div *ngIf="!bodyArea.valid && (bodyArea.dirty || bodyArea.touched)"
+    class=" d-flex justify-content-center text-uppercase">
+        <p class="text-danger" *ngIf="bodyArea.errors?.required">
+          Post body is required
+        </p>
+        <p class="text-danger" *ngIf="bodyArea.errors?.minlength">
+            Must type at least 5 characters
+        </p>
+      </div>
     <div class="d-flex justify-content-center pt-1 mb-3">
-        <button type="submit" class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4 rounded-pill">
+        <button type="submit" class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4 rounded-pill"
+            [ngClass]="{'is-loading':loading}"
+            [disabled]="!postForm.valid"
+            >
             Add new post
         </button>
     </div>
     </form>
-</div>
+        <p *ngIf="success" class="text-primary text-uppercase d-flex justify-content-center" >Post has been created!</p>
+    </div>
 
+    <div class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4  ">
+        <a class="d-flex text-light p-3"
+        routerLink="/posts">
+      VIEW ALL POSTS
+        </a>
+    </div>

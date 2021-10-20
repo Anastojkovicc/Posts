@@ -6,20 +6,25 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts-component/posts-component.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import { FormsModule } from '@angular/forms';
+import { PostService } from './services/post-service.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
-    PostFormComponent
+    PostFormComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
