@@ -1,0 +1,18 @@
+<div class="form-control-lg border border-primary shadow-lg px-5 py-3 m-4 bg-body rounded" >
+    <div class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4 rounded-pill"> 
+         {{post.title}} 
+     </div>
+    <div class="bg-light fs-5 fw-lighter p-3 border border-primary"> 
+         {{post.body}} 
+     </div>
+</div>
+
+<div class=" border border-primary shadow-lg  py-1 my-2 bg-body" 
+*ngFor="let postComment of postComments">
+    <div class="d-flex justify-content-leftpt-1 p-2 mb-3 text-primary"> 
+         {{postComment.name}}
+     </div>
+    <div class="bg-light fs-7 p-3 border border-primary"> 
+         {{postComment.body}} 
+     </div>
+</div>

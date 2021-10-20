@@ -1,5 +1,5 @@
 import { Component, OnInit, Output,EventEmitter, ViewChild} from '@angular/core';
-import { Post } from '../post';
+import { Post  } from '../interfaces';
 import { PostService} from '../services/post-service.service';
 import {  NgForm } from '@angular/forms';
 
