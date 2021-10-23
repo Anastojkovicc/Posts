@@ -3,7 +3,7 @@
     <label>CREATE NEW POST</label>
 </div>
 <div class="form-control-lg border border-primary shadow-lg px-5 py-3 m-4 bg-body rounded">
-    <form #postForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
         <div class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4 rounded-pill ">
             <label>Title:</label>
         </div>
@@ -56,19 +56,14 @@
       </div>
     <div class="d-flex justify-content-center pt-1 mb-3">
         <button type="submit" class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4 rounded-pill"
-            [ngClass]="{'is-loading':loading}"
             [disabled]="!postForm.valid"
             >
             Add new post
         </button>
     </div>
     </form>
-        <p *ngIf="success" class="text-primary text-uppercase d-flex justify-content-center"  >Post has been created!</p>
+        <p *ngIf="success" class="text-primary text-uppercase d-flex justify-content-center">
+          Post has been created!</p>
     </div>
 
-    <!-- <div class="d-flex justify-content-center pt-1 mb-3 text-light bg-primary bg-gradient fs-4  ">
-        <a class="d-flex text-light p-3"
-        routerLink="/posts">
-      VIEW ALL POSTS
-        </a>
-    </div> -->
+ 

@@ -27,7 +27,7 @@ import { CommentsComponent } from './comments-component/comments-component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [PostService ],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

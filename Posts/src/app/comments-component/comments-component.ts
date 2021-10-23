@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post , Comment } from '../interfaces';
 import { PostService } from '../services/post-service.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'comments',
@@ -28,4 +29,6 @@ export class CommentsComponent implements OnInit {
       this.postComments = response;
     });
   }
+
+
 }

@@ -11,42 +11,27 @@ import {  NgForm } from '@angular/forms';
 })
 
 export class PostFormComponent implements OnInit {
-  @Output() newPostInList = new EventEmitter<Post>();
-
-  @ViewChild('postForm') postForm !: NgForm;
-
-  public success: boolean = false;
-  public loading: boolean = false;
 
   public postInformations: Post = {
+    id : 0,
+    userId : 1,
     title: '',
     body: ''
   };
 
   constructor(private postService:PostService) { }
 
+  public success : boolean = false;
+
   ngOnInit(): void {
   }
 
-  addPostInList(post: Post){
-    this.newPostInList.emit({...post});
-  }
-
-  onSubmit() {
-    this.loading= true;
-    this.postService.createPost(this.postInformations).subscribe(
-      response => {
-        console.log(response);
-        this.loading= false;
-        this.success= true;
-        this.addPostInList(this.postInformations);
-        
-      },
-      error => {
-        console.log(error.message);
-        this.loading= false;
-      }
-    )
+  onSubmit(form: NgForm) {
+    const post : Post  = {
+      ...this.postInformations
+    }
+    this.postService.newPost(post);
+    this.success= true;
   }
 
 }
